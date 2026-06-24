@@ -1,5 +1,5 @@
 const buildInfo = {
-  version: typeof __BUILD_VERSION__ !== 'undefined' ? __BUILD_VERSION__ : '1.0.0',
+  version: typeof __BUILD_VERSION__ !== 'undefined' ? __BUILD_VERSION__ : '1.0.1',
   timestamp: typeof __BUILD_TIMESTAMP__ !== 'undefined' ? __BUILD_TIMESTAMP__ : new Date().toISOString(),
   commitHash: typeof __BUILD_COMMIT_HASH__ !== 'undefined' ? __BUILD_COMMIT_HASH__ : 'unknown',
   branch: typeof __BUILD_BRANCH__ !== 'undefined' ? __BUILD_BRANCH__ : 'unknown',
