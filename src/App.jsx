@@ -34,6 +34,7 @@ import TeamRequests from './pages/team/Requests'
 import Onboarding from './pages/Onboarding'
 import PortalConsultation from './pages/portal/Consultation'
 import ConsultationRequests from './pages/admin/ConsultationRequests'
+import HealthCheck from './pages/HealthCheck'
 
 function ProtectedPortal({ children }) {
   const { user, verified } = useAuth()
@@ -137,6 +138,7 @@ export default function App() {
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/verify" element={<VerifyEmail />} />
                 <Route path="/consultation" element={<PortalConsultation />} />
+                <Route path="/health" element={<HealthCheck />} />
               </Routes>
             </main>
             <Footer />
