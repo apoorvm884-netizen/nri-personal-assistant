@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #EDF5F2;
+  --color-primary-100: #CBE2D8;
+  --color-primary-200: #A8CFBE;
+  --color-primary-300: #7FB8A1;
+  --color-primary-400: #5F8F7B;
+  --color-primary-500: #2E5B4E;
+  --color-primary-600: #24483E;
+  --color-primary-700: #1A362F;
+  --color-primary-800: #10241F;
+  --color-primary-900: #081210;
+
+  --color-accent-50: #FAF6ED;
+  --color-accent-100: #F2E8CC;
+  --color-accent-200: #E8D9A8;
+  --color-accent-300: #DECA84;
+  --color-accent-400: #D3BE67;
+  --color-accent-500: #C7B273;
+  --color-accent-600: #A8954D;
+  --color-accent-700: #7D6E3A;
+  --color-accent-800: #524827;
+  --color-accent-900: #292313;
+
+  --color-sage-50: #F4F8F6;
+  --color-sage-100: #E0EDE7;
+  --color-sage-200: #C2D9CD;
+  --color-sage-300: #A0C2B1;
+  --color-sage-400: #7BA894;
+  --color-sage-500: #5F8F7B;
+  --color-sage-600: #4B7262;
+  --color-sage-700: #3A5A4D;
+  --color-sage-800: #2A4238;
+  --color-sage-900: #17261F;
+
+  --color-charcoal-50: #F5F5F5;
+  --color-charcoal-100: #E0E0E0;
+  --color-charcoal-200: #BDBDBD;
+  --color-charcoal-300: #9E9E9E;
+  --color-charcoal-400: #757575;
+  --color-charcoal-500: #424242;
+  --color-charcoal-600: #333333;
+  --color-charcoal-700: #222222;
+  --color-charcoal-800: #111111;
+  --color-charcoal-900: #000000;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-charcoal-800);
+  background-color: white;
+}
+
+.section-padding {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
