@@ -365,7 +365,12 @@ export function AdminProvider({ children }) {
     const completedRequests = userRequests.filter((r) => r.status === 'Completed' || r.status === 'Cancelled')
     const totalTasks = (PLAN_LIMITS[u.subscriptionPlan] || 0) + (u.extraTasksPurchased || 0)
     const remaining = u.subscriptionPlan === 'Concierge' ? Infinity : Math.max(0, totalTasks - (u.taskUsage || 0))
-    return { ...u, totalRequests: userRequests.length, activeRequests, completedRequests, remaining, totalTasks }
+    const remindersCount = allReminders.filter((r) => r.userId === u.id && !r.completed).length
+    const assignedRequest = userRequests.find((r) => r.assignedTo)
+    const assignedTeamMember = assignedRequest
+      ? users.find((x) => x.id === assignedRequest.assignedTo)
+      : null
+    return { ...u, totalRequests: userRequests.length, activeRequests, completedRequests, remaining, totalTasks, remindersCount, assignedTeamMemberName: assignedTeamMember?.name || assignedTeamMember?.email || '' }
   })
 
   const todayStr = new Date().toISOString().split('T')[0]

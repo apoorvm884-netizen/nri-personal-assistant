@@ -291,6 +291,12 @@ export default function AdminUsers() {
                           Change Role
                         </button>
                       )}
+                      <button
+                        onClick={() => { setSelectedUser(user); setModal('details') }}
+                        className="px-2 py-1 rounded-lg text-[10px] font-semibold bg-charcoal-100 text-charcoal-600 hover:bg-charcoal-200 transition-colors"
+                      >
+                        View
+                      </button>
                       {user.role !== 'Admin' && (
                         <button
                           onClick={() => setConfirmAction(user)}
@@ -514,6 +520,111 @@ export default function AdminUsers() {
               <button onClick={handleDelete} disabled={loading} className="flex-1 px-4 py-2.5 rounded-xl text-sm font-medium bg-red-500 text-white hover:bg-red-600 transition-colors disabled:opacity-50">
                 {loading ? 'Deleting...' : 'Delete'}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Customer Details Modal */}
+      {modal === 'details' && selectedUser && (
+        <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4" onClick={() => { setModal(null); setSelectedUser(null) }}>
+          <div className="bg-white rounded-2xl p-6 w-full max-w-lg shadow-xl max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="font-serif text-lg font-semibold text-charcoal-800">Customer Details</h2>
+              <button onClick={() => { setModal(null); setSelectedUser(null) }} className="text-charcoal-400 hover:text-charcoal-600">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Full Name</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.name || '-'}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Email</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.email || '-'}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Role</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.role || 'Customer'}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Status</label>
+                  <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg text-xs font-medium ${
+                    selectedUser.disabled ? 'bg-red-50 text-red-600' :
+                    selectedUser.verified ? 'bg-green-50 text-green-600' :
+                    'bg-amber-50 text-amber-600'
+                  }`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${
+                      selectedUser.disabled ? 'bg-red-500' :
+                      selectedUser.verified ? 'bg-green-500' :
+                      'bg-amber-500'
+                    }`} />
+                    {selectedUser.disabled ? 'Disabled' : selectedUser.verified ? 'Active' : 'Unverified'}
+                  </span>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Plan</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.subscriptionPlan || 'Personal'}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Country</label>
+                  <p className="text-sm font-medium text-charcoal-800">-</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Created Date</label>
+                  <p className="text-sm font-medium text-charcoal-800">{formatDate(selectedUser.created)}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Last Login</label>
+                  <p className="text-sm font-medium text-charcoal-800">{formatDateTime(selectedUser.lastLogin)}</p>
+                </div>
+              </div>
+
+              <hr className="border-charcoal-100" />
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Active Requests</label>
+                  <p className="text-lg font-semibold text-charcoal-800">{selectedUser.activeRequests?.length || 0}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Completed Requests</label>
+                  <p className="text-lg font-semibold text-charcoal-800">{selectedUser.completedRequests?.length || 0}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Reminders</label>
+                  <p className="text-lg font-semibold text-charcoal-800">{selectedUser.remindersCount || 0}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Assigned Team Member</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.assignedTeamMemberName || 'Unassigned'}</p>
+                </div>
+              </div>
+
+              <hr className="border-charcoal-100" />
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Tasks Used</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.taskUsage || 0}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Tasks Remaining</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.tasksRemaining ?? '-'}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Bonus Tasks</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.extraTasksPurchased || 0}</p>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-charcoal-400 mb-0.5">Verified</label>
+                  <p className="text-sm font-medium text-charcoal-800">{selectedUser.verified ? 'Yes' : 'No'}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
