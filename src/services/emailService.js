@@ -22,11 +22,7 @@ export async function saveEmailSettings(settings) {
 export async function sendEmail({ to, subject, body }) {
   const settings = await getEmailSettings()
   if (!settings.enabled) {
-    console.log('[emailService] Mock: Email not sent - service not enabled')
     return { success: false, mock: true, message: 'Email service not enabled' }
   }
-  console.log(`[emailService] Mock: Sending email via ${settings.provider} to ${to}`)
-  console.log(`[emailService] Mock: Subject: ${subject}`)
-  console.log(`[emailService] Mock: Body: ${body}`)
   return { success: true, mock: true, message: 'Email sent (mock)' }
 }

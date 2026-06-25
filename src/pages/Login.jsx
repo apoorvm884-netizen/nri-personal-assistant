@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getPocketBase } from '../lib/pocketbase'
-import { ROLE_PORTALS, ROLE_LABELS } from '../config/roles'
+import { ROLE_PORTALS } from '../config/roles'
 
 export default function Login() {
   const [email, setEmail] = useState('')

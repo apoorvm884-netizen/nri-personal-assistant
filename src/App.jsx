@@ -34,6 +34,7 @@ import TeamRequests from './pages/team/Requests'
 import Onboarding from './pages/Onboarding'
 import PortalConsultation from './pages/portal/Consultation'
 import ConsultationRequests from './pages/admin/ConsultationRequests'
+import CommandCenter from './pages/admin/CommandCenter'
 import HealthCheck from './pages/HealthCheck'
 
 function ProtectedPortal({ children }) {
@@ -102,6 +103,7 @@ function AdminRoutes() {
       <Route path="/operations" element={<ProtectedAdmin><AdminLayout><Operations /></AdminLayout></ProtectedAdmin>} />
       <Route path="/system-health" element={<ProtectedAdmin><AdminLayout><SystemHealth /></AdminLayout></ProtectedAdmin>} />
       <Route path="/consultations" element={<ProtectedAdmin><AdminLayout><ConsultationRequests /></AdminLayout></ProtectedAdmin>} />
+      <Route path="/command-center" element={<ProtectedAdmin><AdminLayout><CommandCenter /></AdminLayout></ProtectedAdmin>} />
       <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
     </Routes>
   )

@@ -22,9 +22,7 @@ export async function saveAISettings(settings) {
 export async function categorizeRequest(text) {
   const settings = await getAISettings()
   if (!settings.enabled) {
-    console.log('[aiService] Mock: AI not enabled')
     return { category: 'Personal Assistant', priority: 'Medium', title: text.slice(0, 50) }
   }
-  console.log(`[aiService] Mock: Categorizing with ${settings.deepseekKey ? 'DeepSeek' : settings.openaiKey ? 'OpenAI' : 'no provider'}`)
   return { category: 'Personal Assistant', priority: 'Medium', title: text.slice(0, 50) }
 }

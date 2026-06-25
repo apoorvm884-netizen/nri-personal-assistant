@@ -396,6 +396,7 @@ export function AdminProvider({ children }) {
       await pb.collection('auditLogs').create({
         userId,
         adminId: admin?.id,
+        adminName: admin?.name || '',
         action,
         details,
       })

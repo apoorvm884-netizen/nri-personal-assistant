@@ -15,8 +15,8 @@ const footerLinks = {
     { label: 'FAQ', path: '/#faq' },
   ],
   portal: [
-    { label: 'Client Portal', path: '/portal/login' },
-    { label: 'Admin Panel', path: '/admin/login' },
+    { label: 'Client Portal', path: '/login' },
+    { label: 'Admin Panel', path: '/login' },
     { label: 'Submit Request', path: '/portal/submit' },
     { label: 'Dashboard', path: '/portal/dashboard' },
   ],

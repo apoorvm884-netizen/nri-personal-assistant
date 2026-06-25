@@ -63,7 +63,7 @@ export default function Navbar() {
               Sign In
             </Link>
             <Link
-              to="/portal/consultation"
+              to="/consultation"
               className="bg-primary-500 text-white px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide hover:bg-primary-600 transition-all"
             >
               Book a Consultation Call
@@ -106,7 +106,7 @@ export default function Navbar() {
             Sign In
           </Link>
           <Link
-            to="/portal/consultation"
+            to="/consultation"
             className="block text-center bg-primary-500 text-white px-4 py-3 rounded-lg text-sm font-semibold mt-3 hover:bg-primary-600 transition-all"
           >
             Book a Consultation Call

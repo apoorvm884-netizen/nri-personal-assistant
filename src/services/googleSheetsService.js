@@ -22,9 +22,7 @@ export async function saveGoogleSheetsSettings(settings) {
 export async function appendToSheet({ values }) {
   const settings = await getGoogleSheetsSettings()
   if (!settings.enabled) {
-    console.log('[googleSheetsService] Mock: Sheet append not performed - service not enabled')
     return { success: false, mock: true, message: 'Google Sheets service not enabled' }
   }
-  console.log(`[googleSheetsService] Mock: Appending to ${settings.sheetName}:`, values)
   return { success: true, mock: true, message: 'Row appended (mock)' }
 }
